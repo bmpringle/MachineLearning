@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#include <iomanip>
 
-#include "NeuralNetwork.h"
+#include "NeuralNetwork/NeuralNetwork.h"
 
 std::vector<double> weights = {1};
 
@@ -52,7 +53,7 @@ int main() {
         data.push_back(DataPoint(x, generateDataPoint(target_w, x)));
     }
     
-    NeuralNetwork<1> network = NeuralNetwork<1>(linearModel, distanceSquaredErrorFunction, &weights);
+    NeuralNetwork network = NeuralNetwork(linearModel, distanceSquaredErrorFunction, &weights);
     
     network.addDataPoints(data);
 
@@ -60,6 +61,6 @@ int main() {
 
     for(int iteration = 0; iteration < training_iterations; ++iteration) {
         network.doTrainingCycle(learning_rates);
-        std::cout << "after iteration " << iteration + 1 << ", w = " << weights[0] << " and loss = " << network.getAverageLoss() << std::endl;
+        std::cout << std::setprecision(10) << "after iteration " << iteration + 1 << ", w = " << weights[0] << " and loss = " << network.getAverageLoss() << std::endl;
     }
 }
