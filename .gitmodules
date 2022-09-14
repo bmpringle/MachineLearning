@@ -1,0 +1,6 @@
+[submodule "stb"]
+	path = stb
+	url = https://github.com/nothings/stb
+[submodule "exprtk"]
+	path = exprtk
+	url = https://github.com/ArashPartow/exprtk
